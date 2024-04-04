@@ -27,3 +27,18 @@ result = result / 4
 
 alert(userInput)
 alert(result)
+
+
+
+//Funktionen
+function subtract(number1, number2) {
+    const result = number1 - number2
+    return result
+}
+
+function stringify(number) {
+    return `Result ${number}`
+}
+
+subtract(12,10)
+stringify(10)
