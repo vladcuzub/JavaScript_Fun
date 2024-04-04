@@ -40,5 +40,5 @@ function stringify(number) {
     return `Result ${number}`
 }
 
-subtract(12,10)
+subtract(12, 10)
 stringify(10)
