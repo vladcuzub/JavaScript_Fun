@@ -21,17 +21,17 @@ console.log(transform(10, double))
 // -----------------------------
 
 function greet() {
-    console.log('Hello')
+    return 'Hello'
 }
 
 function greetUser(name) {
-    console.log(name)
+    return name
 }
 
-greet()
-greetUser('Vlad')
+console.log(greet())
+console.log(greetUser('Vlad'))
 
-function threeParam(first, second, thirt) {
-    console.log(first, second, thirt)
+function threeParam(first, second, third) {
+    return [first, second, third];
 }
-threeParam('Vlad', 'Cuzub', 'Alex')
+console.log(threeParam('Vlad', 'Cuzub', 'Alex'))
