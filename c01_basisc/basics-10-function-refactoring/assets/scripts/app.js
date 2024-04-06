@@ -3,15 +3,18 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+//Gets input from input field
 function getUserInputNumber() {
   return parseInt(userInput.value)
 }
 
+//Generates and writes calculation log
 function createAndWriteOperator(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription)
 
 }
+
 
 function add() {
   const enteredValue = getUserInputNumber();
@@ -19,10 +22,6 @@ function add() {
   currentResult = currentResult + enteredValue
   createAndWriteOperator('+', initialResult, enteredValue)
 }
-
-
-
-//Connect all buttons to function (alle Tasten mit der Funktion verdinden)
 
 function subtract() {
   const enteredValue = getUserInputNumber();
