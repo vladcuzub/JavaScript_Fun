@@ -1,1 +1,1 @@
-# JavaScript_beginnerToAdvenced
+# JavaScript_Fun Project
