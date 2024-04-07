@@ -19,14 +19,14 @@ function createAndWriteOperator(operator, resultBeforeCalc, calcNumber) {
 function add() {
   const enteredValue = getUserInputNumber();
   const initialResult = currentResult
-  currentResult = currentResult + enteredValue
+  currentResult += enteredValue
   createAndWriteOperator('+', initialResult, enteredValue)
 }
 
 function subtract() {
   const enteredValue = getUserInputNumber();
   const initialResult = currentResult
-  currentResult = currentResult - enteredValue;
+  currentResult -= enteredValue;
   createAndWriteOperator('-', initialResult, enteredValue)
 
 }
@@ -34,7 +34,7 @@ function subtract() {
 function multiply() {
   const enteredValue = getUserInputNumber();
   const initialResult = currentResult
-  currentResult = currentResult * enteredValue;
+  currentResult += enteredValue;
   createAndWriteOperator('*', initialResult, enteredValue)
 
 }
@@ -42,7 +42,7 @@ function multiply() {
 function devide() {
   const enteredValue = getUserInputNumber();
   const initialResult = currentResult
-  currentResult = currentResult / enteredValue;
+  currentResult /= enteredValue;
   createAndWriteOperator('/', initialResult, enteredValue)
 }
 
