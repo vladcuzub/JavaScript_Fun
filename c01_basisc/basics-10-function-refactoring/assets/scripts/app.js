@@ -15,7 +15,6 @@ function createAndWriteOperator(operator, resultBeforeCalc, calcNumber) {
 
 }
 
-
 function add() {
   const enteredValue = getUserInputNumber();
   const initialResult = currentResult
@@ -45,7 +44,6 @@ function devide() {
   currentResult /= enteredValue;
   createAndWriteOperator('/', initialResult, enteredValue)
 }
-
 
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
