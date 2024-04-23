@@ -1,15 +1,11 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-function add(num1, num2) {
-    const result = num1 + num2;
+function add() {
+    const result = currentResult + userInput.value;
    return result
 }
 
-currentResult = add(1, 2);
-
-
-
-let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`;
+addBtn.addEventListener('click', add) //execute function 'indirectly' using DOM  (Document Object Model)
 
 outputResult(currentResult, calculationDescription);
