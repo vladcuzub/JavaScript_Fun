@@ -13,7 +13,7 @@ function crateAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 function add() {
     const enteredNumber = getUserInput()
     const initialResult = currentResult
-    currentResult = currentResult + enteredNumber;
+    currentResult += enteredNumber;
     crateAndWriteOutput('+', initialResult, enteredNumber)
 
 }
@@ -21,7 +21,7 @@ function add() {
 function subtract() {
     const enteredNumber = getUserInput()
     const initialResult = currentResult
-    currentResult = currentResult - enteredNumber;
+    currentResult -= enteredNumber;
     crateAndWriteOutput('-', initialResult, enteredNumber)
 
 }
@@ -29,7 +29,7 @@ function subtract() {
 function multiply() {
     const enteredNumber = getUserInput()
     const initialResult = currentResult
-    currentResult = currentResult * enteredNumber;
+    currentResult *= enteredNumber;
     crateAndWriteOutput('*', initialResult, enteredNumber)
 
 }
@@ -37,7 +37,7 @@ function multiply() {
 function divide() {
     const enteredNumber = getUserInput()
     const initialResult = currentResult
-    currentResult = currentResult / enteredNumber;
+    currentResult /= enteredNumber;
     crateAndWriteOutput('/', initialResult, enteredNumber)
 
 }
