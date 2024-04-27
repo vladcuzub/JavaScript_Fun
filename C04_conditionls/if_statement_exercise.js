@@ -17,9 +17,9 @@ function solve() {
 
     if (age < 18) {
         userCategory = 'child'
-    } else if (age => 18) {
+    } else if (age >= 18 & age < 65) {
         userCategory = 'adult'
-    } else if (age{
-
+    } else if (age >= 65) {
+        userCategory = 'senior'
     }
 }
