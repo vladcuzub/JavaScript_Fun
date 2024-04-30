@@ -8,7 +8,6 @@ let currentUserHealth = chosenMaxLife;
 
 adjustHealthBars(chosenMaxLife);
 
-
 function attackHandler() {
     const damage = dealMonsterDamage(ATTACK_VALUE);
     currentMonsterHealth -= damage;
@@ -36,7 +35,6 @@ function strongAttackHandler () {
         alert('You Lost!')
     }
 }
-
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
