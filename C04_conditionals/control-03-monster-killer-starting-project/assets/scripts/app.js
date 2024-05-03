@@ -8,7 +8,6 @@ let currentPlayerHealth = chosenMaxLife;
 
 adjustHealthBars(chosenMaxLife);
 
-
 function attackMonster(attackMode) {
     let maxDamage;
 
