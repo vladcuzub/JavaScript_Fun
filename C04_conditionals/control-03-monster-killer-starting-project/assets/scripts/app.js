@@ -10,7 +10,7 @@ let currentPlayerHealth = chosenMaxLife;
 adjustHealthBars(chosenMaxLife);
 
 
-function endRound(){
+function endRound() {
 
     const playerDamge = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamge;
@@ -48,8 +48,16 @@ function strongAttackHandler() {
     attackMonster('STRONG ATTACK');
 }
 
-function healPlayerHandler (){
+function healPlayerHandler() {
+    let healtValue;
+    if(currentPlayerHealth >= chosenMaxLife - HEAL_VALUE){
+        alert("You can't heal to more than your max initial health ")
+        healtValue = chosenMaxLife -currentPlayerHealth
+    } else {
+        healtValue = HEAL_VALUE;
+    }
     increasePlayerHealth(HEAL_VALUE);
+    currentPlayerHealth += HEAL_VALUE ;
     endRound();
 }
 
