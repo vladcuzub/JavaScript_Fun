@@ -9,9 +9,7 @@ let currentPlayerHealth = chosenMaxLife;
 
 adjustHealthBars(chosenMaxLife);
 
-
 function endRound() {
-
     const playerDamge = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamge;
 
@@ -23,7 +21,6 @@ function endRound() {
         alert('It is draw !');
     }
 }
-
 
 function attackMonster(attackMode) {
     let maxDamage;
@@ -38,7 +35,6 @@ function attackMonster(attackMode) {
     currentMonsterHealth -= damage;
     endRound();
 }
-
 
 function attackHandler() {
     attackMonster('ATTACK');
