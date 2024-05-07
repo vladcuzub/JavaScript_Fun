@@ -6,12 +6,33 @@ const HEAL_VALUE = 20;
 let chosenMaxLife = 100;
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
+let isBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
+
+//================= Reset Game ==================
+
+function reset() {
+    currentMonsterHealth = chosenMaxLife;
+    currentPlayerHealth = chosenMaxLife;
+    resetGame(chosenMaxLife)
+}
+//================= Reset Game ==================
+
+
+//=======================  Logic game ============================
 function endRound() {
     const playerDamge = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamge;
+
+    if (currentPlayerHealth <= 0 && isBonusLife) {
+        isBonusLife = false
+        removeBonusLife();
+        currentPlayerHealth = increasePlayerHealth
+        setPlayerHealth(initialPlayerHealth)
+        alert('You would be dead but bonus life saved you')
+    }
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You Won!');
@@ -20,7 +41,17 @@ function endRound() {
     } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
         alert('It is draw !');
     }
+
+    if (currentMonsterHealth <= 0 && currentPlayerHealth > 0 ||
+        currentPlayerHealth <= 0 && currentMonsterHealth > 0 ||
+        currentMonsterHealth <= 0 && currentPlayerHealth <= 0
+    ) {
+        reset()
+    }
+
 }
+//=======================  Logic game ============================
+
 
 function attackMonster(attackMode) {
     let maxDamage;
@@ -46,16 +77,17 @@ function strongAttackHandler() {
 
 function healPlayerHandler() {
     let healtValue;
-    if(currentPlayerHealth >= chosenMaxLife - HEAL_VALUE){
+    if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
         alert("You can't heal to more than your max initial health ")
-        healtValue = chosenMaxLife -currentPlayerHealth
+        healtValue = chosenMaxLife - currentPlayerHealth
     } else {
         healtValue = HEAL_VALUE;
     }
     increasePlayerHealth(HEAL_VALUE);
-    currentPlayerHealth += HEAL_VALUE ;
+    currentPlayerHealth += HEAL_VALUE;
     endRound();
 }
+
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
