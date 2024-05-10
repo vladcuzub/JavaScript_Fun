@@ -2,13 +2,20 @@ const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 17;
 const MONSTER_ATTACK_VALUE = 10;
 const HEAL_VALUE = 20;
+const ATTACK_MODE = 'Attack';
+const STRONG_MODE_ATTACK = 'Strong Attack'
 
-const enteredNumber = prompt('Maximum of life for you and the monster','100');
+
+// =================  input the life value ================= 
+const enteredNumber = prompt('Maximum of life for you and the monster', '100');
 let chosenMaxLife = parseInt(enteredNumber);
 
-if(isNaN(chosenMaxLife) || chosenMaxLife <= 0){
+if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100
 }
+// =================  input the life value ================= 
+
+
 
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
@@ -29,13 +36,14 @@ function reset() {
 
 //=======================  Logic game ============================
 function endRound() {
+    const initialPlayerHealth = currentPlayerHealth
     const playerDamge = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamge;
 
     if (currentPlayerHealth <= 0 && isBonusLife) {
         isBonusLife = false
         removeBonusLife();
-        currentPlayerHealth = increasePlayerHealth
+        currentPlayerHealth = initialPlayerHealth
         setPlayerHealth(initialPlayerHealth)
         alert('You would be dead but bonus life saved you')
     }
@@ -54,7 +62,6 @@ function endRound() {
     ) {
         reset()
     }
-
 }
 //=======================  Logic game ============================
 
@@ -62,9 +69,9 @@ function endRound() {
 function attackMonster(attackMode) {
     let maxDamage;
 
-    if (attackMode === 'ATTACK') {
+    if (attackMode === ATTACK_MODE) {
         maxDamage = ATTACK_VALUE;
-    } else if (attackMode === 'STRONG ATTACK') {
+    } else if (attackMode === STRONG_MODE_ATTACK) {
         maxDamage = STRONG_ATTACK_VALUE;
     }
 
@@ -74,11 +81,11 @@ function attackMonster(attackMode) {
 }
 
 function attackHandler() {
-    attackMonster('ATTACK');
+    attackMonster(ATTACK_MODE);
 }
 
 function strongAttackHandler() {
-    attackMonster('STRONG ATTACK');
+    attackMonster(STRONG_MODE_ATTACK);
 }
 
 function healPlayerHandler() {
