@@ -11,7 +11,7 @@ const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
 
-
+// Life input
 const enteredNumber = prompt('Maximum of life for you and the monster', '100');
 let chosenMaxLife = parseInt(enteredNumber);
 let battleLog = []
@@ -20,15 +20,16 @@ if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100
 }
 
-
-
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let isBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
+// Life input
 
-// ======= write to log ===========
+
+
+// ======= Write to log ===========
 function writeToLog(event, value, monsterHealth, playerHealth) {
     let logEntry;
     if (event === LOG_EVENT_PLAYER_ATTACK) {
@@ -108,10 +109,25 @@ function endRound() {
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You Won!');
+        writeToLog(
+            LOG_EVENT_GAME_OVER,
+            'PLAYER WON',
+            currentMonsterHealth,
+            currentPlayerHealth)
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You Lost!');
+        writeToLog(
+            LOG_EVENT_GAME_OVER,
+            'MONSTER WON',
+            currentMonsterHealth,
+            currentPlayerHealth)
     } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
         alert('It is draw !');
+        writeToLog(
+            LOG_EVENT_GAME_OVER,
+            'ITS A DRAW',
+            currentMonsterHealth,
+            currentPlayerHealth)
     }
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0 ||
@@ -126,16 +142,23 @@ function endRound() {
 
 function attackMonster(attackMode) {
     let maxDamage;
+    let logEvent;
 
     if (attackMode === ATTACK_MODE) {
+        logEvent = LOG_EVENT_PLAYER_ATTACK;
         maxDamage = ATTACK_VALUE;
     } else if (attackMode === STRONG_MODE_ATTACK) {
+        logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
         maxDamage = STRONG_ATTACK_VALUE;
     }
-
     const damage = dealMonsterDamage(maxDamage);
     currentMonsterHealth -= damage;
     endRound();
+    writeToLog(
+        logEvent,
+        damage,
+        currentMonsterHealth,
+        currentPlayerHealth)
 }
 
 function attackHandler() {
@@ -160,7 +183,7 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-    consolee.log(battleLog);
+    console.log(battleLog);
 }
 
 attackBtn.addEventListener('click', attackHandler);
