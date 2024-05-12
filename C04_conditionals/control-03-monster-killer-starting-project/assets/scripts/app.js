@@ -141,16 +141,16 @@ function endRound() {
 
 
 function attackMonster(attackMode) {
-    let maxDamage;
-    let logEvent;
+    const maxDamage = attackMode === ATTACK_MODE ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+    const logEvent = attackMode === ATTACK_MODE ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAYER_STRONG_ATTACK;
 
-    if (attackMode === ATTACK_MODE) {
-        logEvent = LOG_EVENT_PLAYER_ATTACK;
-        maxDamage = ATTACK_VALUE;
-    } else if (attackMode === STRONG_MODE_ATTACK) {
-        logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-        maxDamage = STRONG_ATTACK_VALUE;
-    }
+    // if (attackMode === ATTACK_MODE) {
+    //     logEvent = LOG_EVENT_PLAYER_ATTACK;
+    //     maxDamage = ATTACK_VALUE;
+    // } else if (attackMode === STRONG_MODE_ATTACK) {
+    //     logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
+    //     maxDamage = STRONG_ATTACK_VALUE;
+    // }
     const damage = dealMonsterDamage(maxDamage);
     currentMonsterHealth -= damage;
     endRound();
