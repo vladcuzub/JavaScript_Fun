@@ -28,8 +28,6 @@ let isBonusLife = true;
 adjustHealthBars(chosenMaxLife);
 // Life input
 
-
-
 // ======= Write to log ===========
 function writeToLog(ev, val, monsterHealth, playerHealth) {
     let logEntry;
