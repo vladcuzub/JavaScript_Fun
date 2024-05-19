@@ -238,8 +238,18 @@ function healPlayerHandler() {
     endRound();
 }
 
+// ====================   Loops  ====================================
+
 function printLogEntry() {
+
+    for(let i = 0; i < 3; i++) {
+        console.log('------------------------------------')
+    }
     console.log(battleLog);
+
+    for(const logEntry of battleLog){
+        console.log(logEntry)
+    }
 }
 
 attackBtn.addEventListener('click', attackHandler);
@@ -248,5 +258,3 @@ healBtn.addEventListener('click', healPlayerHandler);
 logBtn.addEventListener('click', printLogEntry);
 
 
-
-//Loops
