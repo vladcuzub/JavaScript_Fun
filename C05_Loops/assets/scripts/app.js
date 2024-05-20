@@ -13,11 +13,11 @@ const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
 const enteredNumber = prompt('Maximum of life for you and the monster', '100'); // Life input
 let chosenMaxLife = parseInt(enteredNumber);
-let battleLog = []; // store all Logs
+let battleLog = []; // store all Logs = ARRAY
 
 
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-    chosenMaxLife = 100
+    chosenMaxLife = 100;
 }
 
 let currentMonsterHealth = chosenMaxLife;
@@ -29,7 +29,7 @@ adjustHealthBars(chosenMaxLife);
 
 // ======= Write to log ===========
 function writeToLog(ev, val, monsterHealth, playerHealth) {
-    let logEntry;
+    let logEntry; // OBJECT
 
     switch (ev) {
         case LOG_EVENT_PLAYER_ATTACK:
@@ -122,7 +122,6 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
     //     };
     // }
     battleLog.push(logEntry)
-
 }
 
 
@@ -209,7 +208,6 @@ function attackMonster(attackMode) {
         currentMonsterHealth,
         currentPlayerHealth);
     endRound();
-
 }
 
 function attackHandler() {
@@ -242,15 +240,24 @@ function healPlayerHandler() {
 
 function printLogEntry() {
 
-    for(let i = 0; i < 3; i++) {
-        console.log('------------------------------------')
-    }
-    console.log(battleLog);
+    // for(let i = 0; i < 3; i++) {
+    //     console.log('------------------------------------')
+    // }
 
-    for(const logEntry of battleLog){
-        console.log(logEntry)
+    let numberLogs = 0;
+
+    for (const logEntry of battleLog) { // (for of) iterate all string proprieties of a ARRAY
+        console.log(`# ===========  ${numberLogs} ==================`)
+       
+        for (key in logEntry) { // (for in) iterate all string proprieties of a OBJECT
+            console.log(`${key} ====> ${logEntry[key]} `)
+        }
+        numberLogs++;
+        break;
     }
 }
+
+
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
