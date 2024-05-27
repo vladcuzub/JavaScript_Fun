@@ -14,6 +14,10 @@ const ROCK = 'rock';
 const PAPER = 'paper';
 const SCISSORS = 'scissors';
 const DEFAULT_CHOICE = ROCK;
+const PLAYER_WINS = 'I win !!!';
+const COMPUTER_WINS = 'Computer wins';
+const DRAW = " It's a draw";
+
 
 let gameIsRunning = false;
 
@@ -28,6 +32,7 @@ const getPlayerChoice = function () {
         alert(`Invalid choice! by default you chose is ${DEFAULT_CHOICE}!`);
         return DEFAULT_CHOICE;
     }
+    console.log(`You chose ${selection}`)
     return selection;
 };
 // ===================================  PLAYER CHOICE =================================== 
@@ -35,25 +40,48 @@ const getPlayerChoice = function () {
 
 // ===================================  COMPUTER CHOICE =================================== 
 const getComputerChoice = function () {
-    const randomValue = Math.floor(Math.random()) * 3;
+    const randomValue = Math.floor(Math.random() * 3);
     if (randomValue == 1) {
+        console.log(`Computer chose ${ROCK}`);
         return ROCK;
     } else if (randomValue == 2) {
+        console.log(`Computer chose ${PAPER}`);
         return PAPER;
     } else {
-        return SCISSORS
+        console.log(`Computer chose ${SCISSORS}`);
+        return SCISSORS;
     }
-    console.log(randomValue)
 }
 // ===================================  COMPUTER CHOICE =================================== 
+const getWinner = (computerChoice, playerChoice) =>
+
+    computerChoice === playerChoice
+        ? DRAW : (computerChoice === ROCK && playerChoice === PAPER)
+            || (computerChoice === PAPER && playerChoice === SCISSORS)
+            || (computerChoice === SCISSORS && playerChoice === ROCK) ? PLAYER_WINS : COMPUTER_WINS;
+
+// if (computerChoice === playerChoice) {
+//     return DRAW;
+// } else if (computerChoice === ROCK && playerChoice === PAPER
+//     || computerChoice === PAPER && playerChoice === SCISSORS
+//     || computerChoice === SCISSORS && playerChoice === ROCK
+// ) {
+//     return PLAYER_WINS;
+// } else {
+//     return COMPUTER_WINS;
+// }
+
+
 
 startGameBtn.addEventListener('click', function () {  //  <======  function anonymous
     if (gameIsRunning) {
         return;
     }
     gameIsRunning = true;
-    console.log('The Game is starting.....!')
     const playerSelection = getPlayerChoice();
     const computerChoice = getComputerChoice();
-    alert(`You chose ${playerSelection} !`)
+
+    alert(`You chose ${playerSelection} !`);
+    const winner = getWinner(computerChoice, playerSelection);
+    console.log(`The winner is :${winner}`)
 })
