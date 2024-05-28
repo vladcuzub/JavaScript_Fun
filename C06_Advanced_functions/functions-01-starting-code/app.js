@@ -23,7 +23,7 @@ let gameIsRunning = false;
 
 
 // ===================================  PLAYER CHOICE =================================== 
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
     const selection = prompt(`${ROCK}, ${PAPER} and ${SCISSORS} ? `, '').toLocaleLowerCase();
     if (selection !== ROCK &&
         selection !== PAPER &&
@@ -39,7 +39,7 @@ const getPlayerChoice = function () {
 
 
 // ===================================  COMPUTER CHOICE =================================== 
-const getComputerChoice = function () {
+const getComputerChoice = () => {
     const randomValue = Math.floor(Math.random() * 3);
     if (randomValue == 1) {
         console.log(`Computer chose ${ROCK}`);
@@ -73,7 +73,7 @@ const getWinner = (computerChoice, playerChoice) =>
 
 
 
-startGameBtn.addEventListener('click', function () {  //  <======  function anonymous
+startGameBtn.addEventListener('click', () => {  //  <======  function anonymous
     if (gameIsRunning) {
         return;
     }
