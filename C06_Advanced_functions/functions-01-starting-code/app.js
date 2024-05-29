@@ -32,7 +32,6 @@ const getPlayerChoice = () => {
         alert(`Invalid choice! by default you chose is ${DEFAULT_CHOICE}!`);
         return DEFAULT_CHOICE;
     }
-    console.log(`You chose ${selection}`)
     return selection;
 };
 // ===================================  PLAYER CHOICE =================================== 
@@ -42,13 +41,10 @@ const getPlayerChoice = () => {
 const getComputerChoice = () => {
     const randomValue = Math.floor(Math.random() * 3);
     if (randomValue == 1) {
-        console.log(`Computer chose ${ROCK}`);
         return ROCK;
     } else if (randomValue == 2) {
-        console.log(`Computer chose ${PAPER}`);
         return PAPER;
     } else {
-        console.log(`Computer chose ${SCISSORS}`);
         return SCISSORS;
     }
 }
@@ -78,10 +74,18 @@ startGameBtn.addEventListener('click', () => {  //  <======  function anonymous
         return;
     }
     gameIsRunning = true;
-    const playerSelection = getPlayerChoice();
+    const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
+    const winner = getWinner(computerChoice, playerChoice);
+    let message = `You chose ${playerChoice} and computer chose ${computerChoice}! Result of game: You `;
+    if (winner === DRAW) {
+        message = message + 'have draw';
+    } else if (winner === PLAYER_WINS){
+        message = message + 'Win !';
+    } else {
+        message = message + 'Lost !';
+    }
+    alert(message);
+    gameIsRunning = false;
 
-    alert(`You chose ${playerSelection} !`);
-    const winner = getWinner(computerChoice, playerSelection);
-    console.log(`The winner is :${winner}`)
 })
