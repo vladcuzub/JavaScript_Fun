@@ -6,8 +6,6 @@ sayHello('Vlad');
 
 
 
-
-
 /*   Adjust the arrow function you created as part of task 1 to use three
         different syntaxes: With two arguments (incl. a phrase that replaces "Hi"),
         with no arguments (hard-coded values in function body) and with one returned value (instead of outputting
