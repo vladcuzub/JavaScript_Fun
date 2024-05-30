@@ -68,7 +68,6 @@ const getWinner = (computerChoice, playerChoice) =>
 // }
 
 
-
 startGameBtn.addEventListener('click', () => {  //  <======  function anonymous
     if (gameIsRunning) {
         return;
@@ -80,7 +79,7 @@ startGameBtn.addEventListener('click', () => {  //  <======  function anonymous
     let message = `You chose ${playerChoice} and computer chose ${computerChoice}! Result of game: You `;
     if (winner === DRAW) {
         message = message + 'have draw';
-    } else if (winner === PLAYER_WINS){
+    } else if (winner === PLAYER_WINS) {
         message = message + 'Win !';
     } else {
         message = message + 'Lost !';
@@ -89,3 +88,20 @@ startGameBtn.addEventListener('click', () => {  //  <======  function anonymous
     gameIsRunning = false;
 
 })
+
+
+
+// ============== Callback function Test ==============
+
+function addString(resultofCalculation) {
+    let word = 'this is the result : ' + resultofCalculation
+    return  word
+}
+
+function calculate(a, b) {
+    let sum = a + b;
+    return sum
+}
+
+let calculation = calculate(2,2);
+console.log(addString(calculation))
